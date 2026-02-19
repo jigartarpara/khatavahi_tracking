@@ -19,12 +19,16 @@
   {
    "fieldname": "user",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "User",
    "options": "User"
   },
   {
    "fieldname": "log_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Log Type",
    "options": "\nIN\nOUT"
   },
@@ -32,6 +36,7 @@
    "default": "Now",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date"
   },
   {
@@ -70,7 +75,7 @@
  "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 13:08:25.159491",
+ "modified": "2026-02-19 15:12:22.830224",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",

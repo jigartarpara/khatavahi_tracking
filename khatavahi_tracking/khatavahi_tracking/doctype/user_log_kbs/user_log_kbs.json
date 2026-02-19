@@ -15,6 +15,8 @@
   {
    "fieldname": "user",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "User",
    "options": "User"
   },
@@ -22,29 +24,33 @@
    "default": "Now",
    "fieldname": "posting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Posting Date"
   },
   {
    "default": "Now",
    "fieldname": "posting_time",
    "fieldtype": "Time",
+   "in_list_view": 1,
    "label": "Posting Time"
   },
   {
    "fieldname": "latitude",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Latitude"
   },
   {
    "fieldname": "longitude",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Longitude"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 13:01:31.438883",
+ "modified": "2026-02-19 15:11:38.583951",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",
