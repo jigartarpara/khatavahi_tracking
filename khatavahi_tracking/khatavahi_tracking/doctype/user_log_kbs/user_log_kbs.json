@@ -1,19 +1,15 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-02-18 15:25:12.211847",
+ "creation": "2026-02-19 12:58:21.033419",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "user",
-  "log_type",
-  "date",
-  "time",
-  "column_break_jtvc",
+  "posting_date",
+  "posting_time",
   "latitude",
-  "longitude",
-  "live_image",
-  "image_display"
+  "longitude"
  ],
  "fields": [
   {
@@ -23,22 +19,16 @@
    "options": "User"
   },
   {
-   "fieldname": "log_type",
-   "fieldtype": "Select",
-   "label": "Log Type",
-   "options": "\nIN\nOUT"
-  },
-  {
    "default": "Now",
-   "fieldname": "date",
+   "fieldname": "posting_date",
    "fieldtype": "Date",
-   "label": "Date"
+   "label": "Posting Date"
   },
   {
    "default": "Now",
-   "fieldname": "time",
+   "fieldname": "posting_time",
    "fieldtype": "Time",
-   "label": "Time"
+   "label": "Posting Time"
   },
   {
    "fieldname": "latitude",
@@ -49,31 +39,15 @@
    "fieldname": "longitude",
    "fieldtype": "Data",
    "label": "Longitude"
-  },
-  {
-   "fieldname": "live_image",
-   "fieldtype": "Attach Image",
-   "label": "Live Image "
-  },
-  {
-   "fieldname": "image_display",
-   "fieldtype": "Image",
-   "label": "Image Display",
-   "options": "live_image"
-  },
-  {
-   "fieldname": "column_break_jtvc",
-   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
- "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 13:08:25.159491",
+ "modified": "2026-02-19 13:01:31.438883",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
- "name": "User Checkin KBS",
+ "name": "User Log KBS",
  "owner": "Administrator",
  "permissions": [
   {
