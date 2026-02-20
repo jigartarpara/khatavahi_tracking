@@ -74,16 +74,7 @@ frappe.pages['user-wise-location-t'].on_page_load = function(wrapper) {
 				<td>${log.latitude || ''}</td>
 				<td>${log.longitude || ''}</td>
 			</tr>`;
-
-			if (log.latitude && log.longitude) {
-				map_points.push([parseFloat(log.latitude), parseFloat(log.longitude)]);
-			}
 		});
-
-		// Sort map points so the line is drawn from Oldest to Newest
-		map_points.reverse();
-		// Also reverse logs to match
-		logs.reverse();
 
 		html += `</tbody></table></div>
 			<div class="col-md-6">
@@ -94,13 +85,13 @@ frappe.pages['user-wise-location-t'].on_page_load = function(wrapper) {
 		let $wrapper = $(`<div class="user-logs-container" style="padding: 15px;">${html}</div>`);
 		$content.append($wrapper);
 
-		if (map_points.length > 0) {
-			render_map(map_points, logs);
+		if (logs.length > 0) {
+			render_map(logs);
 		}
 	}
 
-	function render_map(points = [], logs = []) {
-		if (!points || points.length === 0) return;
+	function render_map(logs = []) {
+		if (!logs || logs.length === 0) return;
 
 		frappe.require('map.bundle.js').then(() => {
 
@@ -127,17 +118,6 @@ frappe.pages['user-wise-location-t'].on_page_load = function(wrapper) {
 				attribution: '© Google Maps'
 			}).addTo(map);
 
-			// Route polyline
-			let polyline = null;
-			if (points.length > 1) {
-				polyline = L.polyline(points, {
-					color: '#4285F4',
-					weight: 5,
-					opacity: 0.9,
-					smoothFactor: 1
-				}).addTo(map);
-			}
-
 			// Marker icon helper
 			const markerIcon = (color) =>
 				L.icon({
@@ -149,34 +129,74 @@ frappe.pages['user-wise-location-t'].on_page_load = function(wrapper) {
 					shadowSize: [41, 41]
 				});
 
-			// Start marker - Green
-			let startPopUpText = `<b>${__('Start Location')}</b>`;
-			if(logs.length > 0 && logs[0].posting_date) {
-				startPopUpText += `<br><b>${__('Date')}:</b> ${frappe.datetime.str_to_user(logs[0].posting_date)}<br><b>${__('Time')}:</b> ${logs[0].posting_time}`;
-			}
+			// Group logs by date
+			let grouped_logs = {};
+			
+			// Reverse logs to draw chronological paths
+			let reversed_logs = [...logs].reverse();
+			
+			reversed_logs.forEach(log => {
+				if (!log.latitude || !log.longitude) return;
+				let date_key = log.posting_date;
+				if (!grouped_logs[date_key]) {
+					grouped_logs[date_key] = [];
+				}
+				grouped_logs[date_key].push(log);
+			});
 
-			L.marker(points[0], { icon: markerIcon('green') })
-				.addTo(map)
-				.bindPopup(startPopUpText);
+			// Distinct colors for different dates
+			const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8E24AA', '#F4511E', '#3949AB', '#00ACC1'];
+			let colorIndex = 0;
+			
+			let all_points = [];
 
-			// End marker (if different) - Red
-			if (points.length > 1) {
-				let endPopUpText = `<b>${__('End Location')}</b>`;
-				let endLog = logs[logs.length-1];
-				if(endLog && endLog.posting_date) {
-					endPopUpText += `<br><b>${__('Date')}:</b> ${frappe.datetime.str_to_user(endLog.posting_date)}<br><b>${__('Time')}:</b> ${endLog.posting_time}`;
+			Object.keys(grouped_logs).forEach(date_key => {
+				let day_logs = grouped_logs[date_key];
+				if(day_logs.length === 0) return;
+				
+				let points = day_logs.map(log => [parseFloat(log.latitude), parseFloat(log.longitude)]);
+				all_points.push(...points);
+
+				let lineColor = colors[colorIndex % colors.length];
+				colorIndex++;
+
+				// Route polyline for the day
+				if (points.length > 1) {
+					let polyline = L.polyline(points, {
+						color: lineColor,
+						weight: 5,
+						opacity: 0.9,
+						smoothFactor: 1
+					}).addTo(map);
+
+					// Date indication on the line
+					let formatted_date = frappe.datetime.str_to_user(date_key);
+					polyline.bindTooltip(`<b>${formatted_date}</b>`, {
+						sticky: true,
+						className: 'map-date-tooltip'
+					});
 				}
 
-				L.marker(points[points.length - 1], { icon: markerIcon('red') })
+				// Start marker for the day
+				let startLog = day_logs[0];
+				let startPopUpText = `<b>${__('Start Location')}</b><br><b>${__('Date')}:</b> ${frappe.datetime.str_to_user(startLog.posting_date)}<br><b>${__('Time')}:</b> ${startLog.posting_time}`;
+				L.marker(points[0], { icon: markerIcon('green') })
 					.addTo(map)
-					.bindPopup(endPopUpText);
-			}
+					.bindPopup(startPopUpText);
+
+				// End marker for the day (if different from start)
+				if (points.length > 1) {
+					let endLog = day_logs[day_logs.length - 1];
+					let endPopUpText = `<b>${__('End Location')}</b><br><b>${__('Date')}:</b> ${frappe.datetime.str_to_user(endLog.posting_date)}<br><b>${__('Time')}:</b> ${endLog.posting_time}`;
+					L.marker(points[points.length - 1], { icon: markerIcon('red') })
+						.addTo(map)
+						.bindPopup(endPopUpText);
+				}
+			});
 
 			// Fit bounds
-			if (polyline) {
-				map.fitBounds(polyline.getBounds(), { padding: [40, 40] });
-			} else {
-				map.setView(points[0], 15);
+			if (all_points.length > 0) {
+				map.fitBounds(L.latLngBounds(all_points), { padding: [40, 40] });
 			}
 		});
 	}
