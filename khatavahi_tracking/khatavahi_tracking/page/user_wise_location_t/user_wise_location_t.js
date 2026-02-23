@@ -14,8 +14,8 @@ frappe.pages['user-wise-location-t'].on_page_load = function(wrapper) {
 		label: __('User'),
 		fieldtype: 'MultiSelectList',
 		options: 'User',
-		get_data: async function (txt) {
-			return frappe.db.get_link_options("User")
+		get_data: function (txt) {
+			return frappe.db.get_link_options("User", txt);
 		},
 		onchange: function() {
 			fetch_logs_if_valid();
