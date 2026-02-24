@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2026-02-19 12:58:21.033419",
  "doctype": "DocType",
@@ -50,7 +51,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 15:11:38.583951",
+ "modified": "2026-02-24 11:39:17.355027",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",
