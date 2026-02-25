@@ -24,6 +24,8 @@ app_license = "mit"
 # Includes in <head>
 # ------------------
 
+after_migrate = "khatavahi_tracking.khatavahi_tracking.setup.after_migrate"
+
 # include js, css files in header of desk.html
 # app_include_css = "/assets/khatavahi_tracking/css/khatavahi_tracking.css"
 # app_include_js = "/assets/khatavahi_tracking/js/khatavahi_tracking.js"
@@ -137,13 +139,13 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Order": {
+		"on_update": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_submit": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_cancel": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
