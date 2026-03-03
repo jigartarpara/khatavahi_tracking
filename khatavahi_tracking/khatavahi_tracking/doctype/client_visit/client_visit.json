@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-03 17:20:50.143967",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "posting_date",
+  "column_break_thdx",
+  "section_break_krpf",
+  "checking_time",
+  "checking_latitude",
+  "checking_longitude",
+  "column_break_qvjs",
+  "checkout_time",
+  "checkout_latitude",
+  "checkout_longitude",
+  "section_break_xpzh",
+  "client_photo_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "checking_time",
+   "fieldtype": "Time",
+   "label": "Checking Time"
+  },
+  {
+   "fieldname": "checking_latitude",
+   "fieldtype": "Data",
+   "label": "Checking Latitude"
+  },
+  {
+   "fieldname": "checkout_time",
+   "fieldtype": "Time",
+   "label": "Checkout Time"
+  },
+  {
+   "fieldname": "checkout_latitude",
+   "fieldtype": "Data",
+   "label": "Checkout Latitude"
+  },
+  {
+   "fieldname": "column_break_thdx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_krpf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qvjs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xpzh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "client_photo_table",
+   "fieldtype": "Table",
+   "label": "Client Photo Table",
+   "options": "Client Photo Table"
+  },
+  {
+   "fieldname": "checking_longitude",
+   "fieldtype": "Data",
+   "label": "Checking Longitude"
+  },
+  {
+   "fieldname": "checkout_longitude",
+   "fieldtype": "Data",
+   "label": "Checkout Longitude"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-03 17:38:49.067464",
+ "modified_by": "Administrator",
+ "module": "Khatavahi Tracking",
+ "name": "Client Visit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
