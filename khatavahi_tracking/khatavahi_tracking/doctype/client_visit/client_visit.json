@@ -7,7 +7,10 @@
  "field_order": [
   "customer",
   "posting_date",
+  "distance_variation",
   "column_break_thdx",
+  "distance_customer_checkin",
+  "distance_checkin_checkout",
   "section_break_krpf",
   "checking_time",
   "checking_latitude",
@@ -93,12 +96,32 @@
    "fieldname": "note",
    "fieldtype": "Text",
    "label": "Note"
+  },
+  {
+   "description": "in meters (Distance Latitude & Longitude)",
+   "fieldname": "distance_customer_checkin",
+   "fieldtype": "Float",
+   "label": "Distance Between Customer and Checkin",
+   "read_only": 1
+  },
+  {
+   "description": "in meters (Distance Latitude & Longitude)",
+   "fieldname": "distance_checkin_checkout",
+   "fieldtype": "Float",
+   "label": "Distance Checkin and Checkout",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "distance_variation",
+   "fieldtype": "Check",
+   "label": "Distance Variation"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-05 11:01:59.983045",
+ "modified": "2026-03-05 13:20:25.183533",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",

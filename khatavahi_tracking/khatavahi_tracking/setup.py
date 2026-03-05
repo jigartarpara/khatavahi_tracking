@@ -15,6 +15,20 @@ def create_custom_fields_logic():
                 "insert_after": "customer",
                 "read_only": 1
             }
+        ],
+        "Customer": [
+            {
+                "fieldname": "latitude",
+                "label": "Latitude",
+                "fieldtype": "Data",
+                "insert_after": "customer_group"
+            },
+            {
+                "fieldname": "longitude",
+                "label": "Longitude",
+                "fieldtype": "Data",
+                "insert_after": "latitude"
+            }
         ]
     }
     create_custom_fields(custom_fields)
