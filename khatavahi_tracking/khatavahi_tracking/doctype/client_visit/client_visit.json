@@ -17,7 +17,8 @@
   "checkout_latitude",
   "checkout_longitude",
   "section_break_xpzh",
-  "client_photo_table"
+  "client_photo_table",
+  "note"
  ],
  "fields": [
   {
@@ -87,12 +88,17 @@
    "fieldname": "checkout_longitude",
    "fieldtype": "Data",
    "label": "Checkout Longitude"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Text",
+   "label": "Note"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-03 17:38:49.067464",
+ "modified": "2026-03-05 11:01:59.983045",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
