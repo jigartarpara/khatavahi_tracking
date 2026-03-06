@@ -5,7 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "customer",
+  "visit_for",
+  "party_name",
   "posting_date",
   "distance_variation",
   "column_break_thdx",
@@ -24,14 +25,6 @@
   "note"
  ],
  "fields": [
-  {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Customer",
-   "options": "Customer",
-   "reqd": 1
-  },
   {
    "default": "Now",
    "fieldname": "posting_date",
@@ -116,12 +109,24 @@
    "fieldname": "distance_variation",
    "fieldtype": "Check",
    "label": "Distance Variation"
+  },
+  {
+   "fieldname": "visit_for",
+   "fieldtype": "Select",
+   "label": "Visit For",
+   "options": "\nOpportunity\nCustomer"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Party Name",
+   "options": "visit_for"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-05 13:20:25.183533",
+ "modified": "2026-03-06 13:18:30.553442",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
