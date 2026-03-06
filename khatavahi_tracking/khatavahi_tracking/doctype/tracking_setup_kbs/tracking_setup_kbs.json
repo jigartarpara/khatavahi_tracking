@@ -5,7 +5,9 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "tracking_time_interval"
+  "tracking_time_interval",
+  "column_break_nmeg",
+  "distance_threshold"
  ],
  "fields": [
   {
@@ -13,13 +15,23 @@
    "fieldname": "tracking_time_interval",
    "fieldtype": "Int",
    "label": "Tracking Time Interval"
+  },
+  {
+   "default": "100",
+   "fieldname": "distance_threshold",
+   "fieldtype": "Float",
+   "label": "Distance Threshold (in meter)"
+  },
+  {
+   "fieldname": "column_break_nmeg",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-02-19 13:10:16.358004",
+ "modified": "2026-03-05 12:43:18.777689",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Tracking Setup KBS",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2026-02-18 15:25:12.211847",
  "doctype": "DocType",
@@ -75,7 +76,7 @@
  "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-19 15:12:22.830224",
+ "modified": "2026-03-05 14:24:05.672163",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
