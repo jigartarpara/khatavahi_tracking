@@ -10,6 +10,8 @@
   "log_type",
   "date",
   "time",
+  "auto_checkout",
+  "auto_checkin",
   "column_break_jtvc",
   "latitude",
   "longitude",
@@ -70,13 +72,25 @@
   {
    "fieldname": "column_break_jtvc",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_checkout",
+   "fieldtype": "Check",
+   "label": "Auto Checkout"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_checkin",
+   "fieldtype": "Check",
+   "label": "Auto Checkin"
   }
  ],
  "grid_page_length": 50,
  "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-05 14:24:05.672163",
+ "modified": "2026-03-09 10:01:32.271904",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",

@@ -150,23 +150,13 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"khatavahi_tracking.tasks.all"
-# 	],
-# 	"daily": [
-# 		"khatavahi_tracking.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"khatavahi_tracking.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"khatavahi_tracking.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"khatavahi_tracking.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# Runs every night at 12 AM.
+	# Auto-creates OUT entries for users who checked IN but missed checking OUT.
+	"daily": [
+		"khatavahi_tracking.khatavahi_tracking.doctype.user_checkin_kbs.user_checkin_kbs.auto_checkout_missing_users"
+	],
+}
 
 # Testing
 # -------
