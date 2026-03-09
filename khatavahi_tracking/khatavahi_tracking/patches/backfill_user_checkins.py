@@ -7,10 +7,15 @@ from frappe.utils import getdate
 def execute():
 	"""
 	Backfill missing User Checkin KBS entries (IN and OUT) from historical User Log KBS data.
+	Only processes records prior to today.
 	"""
+	from frappe.utils import nowdate
+	today = nowdate()
+
 	# Get all unique (user, posting_date) from User Log KBS
 	logs = frappe.db.get_all(
 		"User Log KBS",
+		filters={"posting_date": ["<", today]},
 		fields=["user", "posting_date"],
 		order_by="posting_date desc"
 	)
