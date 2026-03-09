@@ -154,7 +154,8 @@ scheduler_events = {
 	# Runs every night at 12 AM.
 	# Auto-creates OUT entries for users who checked IN but missed checking OUT.
 	"daily": [
-		"khatavahi_tracking.scheduler.auto_checkout_missing_users.execute"
+		"khatavahi_tracking.scheduler.auto_checkout_missing_users.execute",
+		"khatavahi_tracking.scheduler.client_visit_task_creator.execute"
 	],
 }
 
