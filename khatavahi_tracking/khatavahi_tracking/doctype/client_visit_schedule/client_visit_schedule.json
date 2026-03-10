@@ -1,10 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-03-09 17:31:30.522526",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "user",
   "customer",
   "section_break_sqnz",
@@ -93,12 +95,18 @@
   {
    "fieldname": "column_break_zcgf",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "CVS-.DD.-.MM.-.YY.-.####"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-09 17:45:11.547368",
+ "modified": "2026-03-10 09:50:00.568176",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit Schedule",
