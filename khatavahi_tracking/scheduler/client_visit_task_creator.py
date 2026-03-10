@@ -8,6 +8,7 @@ def execute():
     Creates tasks based on Client Visit Schedule for today.
     """
     today_date = getdate(nowdate())
+    formatted_date = today_date.strftime("%d-%m-%Y")
     day_name = today_date.strftime("%A").lower()
     
     # Get schedules where today's day is checked
@@ -28,7 +29,7 @@ def execute():
         if not user or not customer:
             continue
             
-        subject = f"{user} need to visit {customer} on {today_date}"
+        subject = f"{user} need to visit {customer} on {formatted_date}"
         
         existing_task = frappe.db.exists(
             "Task",
@@ -60,7 +61,7 @@ def execute():
                 })
                 
                 frappe.db.commit()
-                frappe.logger().info(f"[Client Visit Task Creator] Created and assigned task {task.name} for {customer} to {user}")
+                frappe.logger().info(f"[Client Visit Task Creator] Created and assigned task {task.name} for {customer} to {user} for {formatted_date}")
                 
             except Exception as e:
                 frappe.log_error(
@@ -69,4 +70,4 @@ def execute():
                 )
                 frappe.logger().error(f"[Client Visit Task Creator] Failed to create task for {customer}. Error: {e}")
         else:
-            frappe.logger().info(f"[Client Visit Task Creator] Task already exists for {customer} on {today_date}. Skipping.")
+            frappe.logger().info(f"[Client Visit Task Creator] Task already exists for {customer} on {formatted_date}. Skipping.")
