@@ -16,8 +16,37 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Report",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User Wise Location Tracking",
+   "link_count": 0,
+   "link_to": "user-wise-location-t",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "User Wise Km Travel",
+   "link_count": 0,
+   "link_to": "User Wise Km Travel",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Khatavahi Tracking",
-   "link_count": 6,
+   "link_count": 7,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -55,6 +84,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Book Order",
+   "link_count": 0,
+   "link_to": "Book Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Face Data",
    "link_count": 0,
    "link_to": "Face Data",
@@ -81,38 +120,9 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Report",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "User Wise Location Tracking",
-   "link_count": 0,
-   "link_to": "user-wise-location-t",
-   "link_type": "Page",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "User Wise Km Travel",
-   "link_count": 0,
-   "link_to": "User Wise Km Travel",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2026-03-09 18:25:09.758539",
+ "modified": "2026-03-17 13:25:38.367193",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Khatavahi Tracking",
