@@ -16,6 +16,9 @@ PERMISSIONS_DATA = {
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Task Comment": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "Customer": {"select": 1, "read": 1, "export": 1},
+    "Opportunity": {"select": 1, "read": 1, "export": 1},
+    "Item": {"select": 1, "read": 1, "export": 1},
 }
 
 class TrackingSetupKBS(Document):
