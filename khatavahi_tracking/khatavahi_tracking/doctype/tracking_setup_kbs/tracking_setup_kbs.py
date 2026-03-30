@@ -12,12 +12,10 @@ PERMISSIONS_DATA = {
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
     "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
     "Book Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
-    "Support Visit": {"select": 1, "read": 1, "write": 1, "submit": 1, "export": 1, "if_owner": 1},
-    "Support Visit Purpose": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Support Visit User": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Support Visit Photo": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Support Visit Consumption": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Support Visit User Log": {"select": 1, "read": 1, "write": 1, "create": 1},
+    "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
+    "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "Task Comment": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
 }
 
 class TrackingSetupKBS(Document):
