@@ -12,6 +12,13 @@ PERMISSIONS_DATA = {
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
     "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
     "Book Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
+    "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
+    "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "Task Comment": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "Customer": {"select": 1, "read": 1, "export": 1},
+    "Opportunity": {"select": 1, "read": 1, "export": 1},
+    "Item": {"select": 1, "read": 1, "export": 1},
 }
 
 class TrackingSetupKBS(Document):
