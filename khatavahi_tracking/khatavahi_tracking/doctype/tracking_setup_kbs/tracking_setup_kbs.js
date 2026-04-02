@@ -8,6 +8,13 @@ frappe.ui.form.on("Tracking Setup KBS", {
 				title: "Select Role",
 				fields: [
 					{
+						label: "User Type",
+						fieldname: "user_type",
+						fieldtype: "Select",
+						options: ["Sales User", "Support User"],
+						reqd: 1
+					},
+					{
 						label: "Role",
 						fieldname: "role",
 						fieldtype: "Link",
@@ -20,7 +27,8 @@ frappe.ui.form.on("Tracking Setup KBS", {
 					frappe.call({
 						method: "khatavahi_tracking.khatavahi_tracking.doctype.tracking_setup_kbs.tracking_setup_kbs.apply_permission_to_all",
 						args: {
-							role: values.role
+							role: values.role,
+							user_type: values.user_type
 						},
 						callback: function (r) {
 							if (!r.exc) {

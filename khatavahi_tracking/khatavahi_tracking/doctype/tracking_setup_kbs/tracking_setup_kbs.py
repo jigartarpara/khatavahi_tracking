@@ -4,7 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
-PERMISSIONS_DATA = {
+SALES_USER_PERMISSIONS = {
     "Tracking Setup KBS": {"select": 1, "read": 1, "export": 1},
     "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
     "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
@@ -12,12 +12,22 @@ PERMISSIONS_DATA = {
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
     "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
     "Book Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
-    "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
-    "Task Comment": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Customer": {"select": 1, "read": 1, "export": 1},
     "Opportunity": {"select": 1, "read": 1, "export": 1},
+    "Item": {"select": 1, "read": 1, "export": 1},
+}
+
+SUPPORT_USER_PERMISSIONS = {
+    "Tracking Setup KBS": {"select": 1, "read": 1, "export": 1},
+    "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
+    "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
+    "Face Data": {"select": 1, "read": 1, "export": 1},
+    "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
+    "Customer": {"select": 1, "read": 1, "export": 1},
     "Item": {"select": 1, "read": 1, "export": 1},
 }
 
@@ -25,11 +35,21 @@ class TrackingSetupKBS(Document):
 	pass
 
 @frappe.whitelist()
-def apply_permission_to_all(role):
+def apply_permission_to_all(role, user_type):
     if not role:
         frappe.throw("Please select a Role")
     
-    for doctype, perm in PERMISSIONS_DATA.items():
+    if not user_type:
+        frappe.throw("Please select a User Type")
+
+    if user_type == "Sales User":
+        permissions = SALES_USER_PERMISSIONS
+    elif user_type == "Support User":
+        permissions = SUPPORT_USER_PERMISSIONS
+    else:
+        frappe.throw("Invalid User Type")
+    
+    for doctype, perm in permissions.items():
         # Check if Custom DocPerm already exists
         existing_perm = frappe.get_all("Custom DocPerm", filters={
             "parent": doctype,
@@ -55,4 +75,4 @@ def apply_permission_to_all(role):
             })
             perm_doc.insert(ignore_permissions=True)
     
-    frappe.msgprint(f"Permissions applied successfully to Role: {role}")
+    frappe.msgprint(f"Permissions applied successfully to Role: {role} as {user_type}")
