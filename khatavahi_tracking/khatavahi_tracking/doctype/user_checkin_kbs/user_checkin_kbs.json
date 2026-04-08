@@ -26,7 +26,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "log_type",
@@ -34,41 +35,48 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Log Type",
-   "options": "\nIN\nOUT"
+   "options": "\nIN\nOUT",
+   "read_only": 1
   },
   {
    "default": "Now",
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date"
+   "label": "Date",
+   "read_only": 1
   },
   {
    "default": "Now",
    "fieldname": "time",
    "fieldtype": "Time",
-   "label": "Time"
+   "label": "Time",
+   "read_only": 1
   },
   {
    "fieldname": "latitude",
    "fieldtype": "Data",
-   "label": "Latitude"
+   "label": "Latitude",
+   "read_only": 1
   },
   {
    "fieldname": "longitude",
    "fieldtype": "Data",
-   "label": "Longitude"
+   "label": "Longitude",
+   "read_only": 1
   },
   {
    "fieldname": "live_image",
    "fieldtype": "Attach Image",
-   "label": "Live Image "
+   "label": "Live Image ",
+   "read_only": 1
   },
   {
    "fieldname": "image_display",
    "fieldtype": "Image",
    "label": "Image Display",
-   "options": "live_image"
+   "options": "live_image",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_jtvc",
@@ -78,26 +86,29 @@
    "default": "0",
    "fieldname": "auto_checkout",
    "fieldtype": "Check",
-   "label": "Auto Checkout"
+   "label": "Auto Checkout",
+   "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "auto_checkin",
    "fieldtype": "Check",
-   "label": "Auto Checkin"
+   "label": "Auto Checkin",
+   "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "turn_off_gps",
    "fieldtype": "Check",
-   "label": "Turn off GPS"
+   "label": "Turn off GPS",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-02 13:13:21.489065",
+ "modified": "2026-04-07 18:33:01.360612",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",

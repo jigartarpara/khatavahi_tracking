@@ -31,27 +31,32 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Posting Date",
+   "read_only": 1,
    "reqd": 1
   },
   {
    "fieldname": "checking_time",
    "fieldtype": "Time",
-   "label": "Checking Time"
+   "label": "Checking Time",
+   "read_only": 1
   },
   {
    "fieldname": "checking_latitude",
    "fieldtype": "Data",
-   "label": "Checking Latitude"
+   "label": "Checking Latitude",
+   "read_only": 1
   },
   {
    "fieldname": "checkout_time",
    "fieldtype": "Time",
-   "label": "Checkout Time"
+   "label": "Checkout Time",
+   "read_only": 1
   },
   {
    "fieldname": "checkout_latitude",
    "fieldtype": "Data",
-   "label": "Checkout Latitude"
+   "label": "Checkout Latitude",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_thdx",
@@ -73,22 +78,26 @@
    "fieldname": "client_photo_table",
    "fieldtype": "Table",
    "label": "Client Photo Table",
-   "options": "Client Photo Table"
+   "options": "Client Photo Table",
+   "read_only": 1
   },
   {
    "fieldname": "checking_longitude",
    "fieldtype": "Data",
-   "label": "Checking Longitude"
+   "label": "Checking Longitude",
+   "read_only": 1
   },
   {
    "fieldname": "checkout_longitude",
    "fieldtype": "Data",
-   "label": "Checkout Longitude"
+   "label": "Checkout Longitude",
+   "read_only": 1
   },
   {
    "fieldname": "note",
    "fieldtype": "Text",
-   "label": "Note"
+   "label": "Note",
+   "read_only": 1
   },
   {
    "description": "in meters (Distance Latitude & Longitude)",
@@ -108,25 +117,28 @@
    "default": "0",
    "fieldname": "distance_variation",
    "fieldtype": "Check",
-   "label": "Distance Variation"
+   "label": "Distance Variation",
+   "read_only": 1
   },
   {
    "fieldname": "visit_for",
    "fieldtype": "Select",
    "label": "Visit For",
-   "options": "\nOpportunity\nCustomer"
+   "options": "\nOpportunity\nCustomer",
+   "read_only": 1
   },
   {
    "fieldname": "party_name",
    "fieldtype": "Dynamic Link",
    "label": "Party Name",
-   "options": "visit_for"
+   "options": "visit_for",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-06 13:18:30.553442",
+ "modified": "2026-04-07 18:34:42.233916",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",

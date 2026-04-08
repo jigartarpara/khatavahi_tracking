@@ -17,14 +17,16 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Visit For",
-   "options": "\nOpportunity\nCustomer"
+   "options": "\nOpportunity\nCustomer",
+   "read_only": 1
   },
   {
    "fieldname": "party_name",
    "fieldtype": "Dynamic Link",
    "in_list_view": 1,
    "label": "Party Name",
-   "options": "visit_for"
+   "options": "visit_for",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_gaxy",
@@ -48,7 +50,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-20 11:59:07.928534",
+ "modified": "2026-04-07 18:33:37.045785",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Location",
