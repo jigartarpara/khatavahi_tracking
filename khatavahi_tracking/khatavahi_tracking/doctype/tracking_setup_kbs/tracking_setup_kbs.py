@@ -36,6 +36,8 @@ class TrackingSetupKBS(Document):
 
 @frappe.whitelist()
 def apply_permission_to_all(role, user_type):
+    from frappe.core.page.permission_manager.permission_manager import add, update
+    
     if not role:
         frappe.throw("Please select a Role")
     
@@ -50,29 +52,9 @@ def apply_permission_to_all(role, user_type):
         frappe.throw("Invalid User Type")
     
     for doctype, perm in permissions.items():
-        # Check if Custom DocPerm already exists
-        existing_perm = frappe.get_all("Custom DocPerm", filters={
-            "parent": doctype,
-            "role": role,
-            "permlevel": 0
-        })
-        
-        if existing_perm:
-            # Update existing permission
-            doc = frappe.get_doc("Custom DocPerm", existing_perm[0].name)
-            doc.update(perm)
-            doc.save(ignore_permissions=True)
-        else:
-            # Create new Custom DocPerm
-            perm_doc = frappe.get_doc({
-                "doctype": "Custom DocPerm",
-                "parent": doctype,
-                "parenttype": "DocType",
-                "parentfield": "permissions",
-                "role": role,
-                "permlevel": 0,
-                **perm
-            })
-            perm_doc.insert(ignore_permissions=True)
+        add(doctype, role, 0)
+            
+        for ptype, value in perm.items():
+            update(doctype, role, 0, ptype, value)
     
     frappe.msgprint(f"Permissions applied successfully to Role: {role} as {user_type}")
