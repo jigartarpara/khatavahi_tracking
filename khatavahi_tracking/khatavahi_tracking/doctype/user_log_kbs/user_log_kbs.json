@@ -7,8 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "user",
+  "column_break_wnjf",
   "posting_date",
   "posting_time",
+  "column_break_xqmi",
   "latitude",
   "longitude"
  ],
@@ -51,12 +53,20 @@
    "in_list_view": 1,
    "label": "Longitude",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wnjf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xqmi",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-08 12:55:21.861496",
+ "modified": "2026-04-09 10:20:07.348268",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",

@@ -8,16 +8,18 @@
  "field_order": [
   "user",
   "log_type",
+  "column_break_jtvc",
   "date",
   "time",
-  "auto_checkout",
-  "auto_checkin",
-  "turn_off_gps",
-  "column_break_jtvc",
+  "column_break_tsue",
   "latitude",
   "longitude",
-  "live_image",
-  "image_display"
+  "section_break_opvl",
+  "auto_checkout",
+  "column_break_izxy",
+  "auto_checkin",
+  "column_break_wfpj",
+  "turn_off_gps"
  ],
  "fields": [
   {
@@ -66,19 +68,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "live_image",
-   "fieldtype": "Attach Image",
-   "label": "Live Image ",
-   "read_only": 1
-  },
-  {
-   "fieldname": "image_display",
-   "fieldtype": "Image",
-   "label": "Image Display",
-   "options": "live_image",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_jtvc",
    "fieldtype": "Column Break"
   },
@@ -102,13 +91,28 @@
    "fieldtype": "Check",
    "label": "Turn off GPS",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tsue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_opvl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_izxy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wfpj",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
- "image_field": "live_image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-07 18:33:01.360612",
+ "modified": "2026-04-09 10:37:16.107344",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
