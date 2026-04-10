@@ -10,10 +10,14 @@
   "customer",
   "sales_person",
   "status",
+  "mark_as_delivered",
   "column_break_dhjt",
   "posting_date",
   "posting_time",
   "delivey_date",
+  "source_warehouse",
+  "section_break_dnau",
+  "payment_mode",
   "section_break_dbfu",
   "item",
   "comment"
@@ -83,12 +87,35 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "BO-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark_as_delivered",
+   "fieldtype": "Check",
+   "label": "Mark as Delivered"
+  },
+  {
+   "depends_on": "eval:doc.mark_as_delivered",
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_break_dnau",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_mode",
+   "fieldtype": "Table",
+   "label": "Payment Mode",
+   "options": "Book Order Payment Mode"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-27 15:59:40.639435",
+ "modified": "2026-04-09 17:35:34.087461",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order",
