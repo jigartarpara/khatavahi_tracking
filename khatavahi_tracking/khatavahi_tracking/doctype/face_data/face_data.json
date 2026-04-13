@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:FACE-{user}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2026-02-24 14:20:01.463707",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "user",
   "face_images"
  ],
@@ -24,16 +25,21 @@
    "fieldtype": "Table",
    "label": "Face Images Upload Table",
    "options": "Face Images Upload"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "FD-.DD.-.MM.-.YY.-.####"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-24 14:20:01.463707",
+ "modified": "2026-04-13 12:10:17.649927",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Face Data",
- "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
