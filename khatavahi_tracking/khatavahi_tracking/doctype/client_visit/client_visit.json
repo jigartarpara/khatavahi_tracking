@@ -1,10 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-03-03 17:20:50.143967",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "visit_for",
   "party_name",
   "posting_date",
@@ -103,6 +105,7 @@
    "description": "in meters (Distance Latitude & Longitude)",
    "fieldname": "distance_customer_checkin",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Distance Between Customer and Checkin",
    "read_only": 1
   },
@@ -110,6 +113,7 @@
    "description": "in meters (Distance Latitude & Longitude)",
    "fieldname": "distance_checkin_checkout",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Distance Checkin and Checkout",
    "read_only": 1
   },
@@ -123,6 +127,7 @@
   {
    "fieldname": "visit_for",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Visit For",
    "options": "\nOpportunity\nCustomer",
    "read_only": 1
@@ -130,15 +135,22 @@
   {
    "fieldname": "party_name",
    "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
    "label": "Party Name",
    "options": "visit_for",
    "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CV-.DD.-.MM.-.YY.-.####"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-07 18:34:42.233916",
+ "modified": "2026-04-13 10:57:20.183348",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
