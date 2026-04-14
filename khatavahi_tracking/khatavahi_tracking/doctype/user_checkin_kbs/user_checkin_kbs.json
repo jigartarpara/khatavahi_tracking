@@ -19,7 +19,9 @@
   "column_break_izxy",
   "auto_checkin",
   "column_break_wfpj",
-  "turn_off_gps"
+  "turn_off_gps",
+  "column_break_qhgt",
+  "session_destroy"
  ],
  "fields": [
   {
@@ -29,7 +31,8 @@
    "in_standard_filter": 1,
    "label": "User",
    "options": "User",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "log_type",
@@ -107,12 +110,23 @@
   {
    "fieldname": "column_break_wfpj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qhgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "session_destroy",
+   "fieldtype": "Check",
+   "label": "Session Destroy",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-09 10:37:16.107344",
+ "modified": "2026-04-14 17:08:42.803610",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",

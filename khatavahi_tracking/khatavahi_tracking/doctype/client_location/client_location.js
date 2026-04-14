@@ -4,6 +4,7 @@
 frappe.ui.form.on("Client Location", {
 	refresh(frm) {
 		frm.trigger("set_dynamic_field_label");
+		frm.disable_save();
 	},
 	visit_for(frm) {
 		frm.trigger("set_dynamic_field_label");
@@ -20,3 +21,4 @@ frappe.ui.form.on("Client Location", {
 		}
 	}
 });
+
