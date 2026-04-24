@@ -10,6 +10,7 @@
   "customer",
   "default_price_list",
   "sales_person",
+  "sales_person_id",
   "status",
   "mark_as_delivered",
   "column_break_dhjt",
@@ -54,7 +55,7 @@
   {
    "fieldname": "sales_person",
    "fieldtype": "Link",
-   "label": "Sales Person",
+   "label": "User",
    "options": "User"
   },
   {
@@ -117,12 +118,18 @@
    "fieldtype": "Link",
    "label": "Default Price List",
    "options": "Price List"
+  },
+  {
+   "fieldname": "sales_person_id",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-24 11:47:50.909559",
+ "modified": "2026-04-24 16:56:24.655311",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order",

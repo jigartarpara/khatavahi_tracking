@@ -14,6 +14,8 @@
   "column_break_thdx",
   "distance_customer_checkin",
   "distance_checkin_checkout",
+  "user",
+  "sales_person",
   "section_break_krpf",
   "checking_time",
   "checking_latitude",
@@ -145,12 +147,24 @@
    "fieldtype": "Select",
    "label": "Series",
    "options": "CV-.DD.-.MM.-.YY.-.####"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-13 10:57:20.183348",
+ "modified": "2026-04-24 17:18:39.766103",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",

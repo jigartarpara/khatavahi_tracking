@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "user",
+  "sales_person",
   "column_break_wnjf",
   "posting_date",
   "posting_time",
@@ -61,12 +62,18 @@
   {
    "fieldname": "column_break_xqmi",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-09 10:20:07.348268",
+ "modified": "2026-04-24 17:19:05.167520",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",
