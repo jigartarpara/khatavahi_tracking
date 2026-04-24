@@ -17,6 +17,11 @@ SALES_USER_PERMISSIONS = {
     "Customer": {"select": 1, "read": 1, "export": 1},
     "Opportunity": {"select": 1, "read": 1, "export": 1},
     "Item": {"select": 1, "read": 1, "export": 1},
+    "Selling Settings": {"select": 1, "read": 1, "export": 1},
+    "Price List": {"select": 1, "read": 1, "export": 1},
+    "Item Group": {"select": 1, "read": 1, "export": 1},
+    "Item Price": {"select": 1, "read": 1, "export": 1},
+    "UOM": {"select": 1, "read": 1, "export": 1},
 }
 
 SUPPORT_USER_PERMISSIONS = {

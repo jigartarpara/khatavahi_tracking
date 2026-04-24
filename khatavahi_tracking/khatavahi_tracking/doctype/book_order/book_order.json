@@ -8,6 +8,7 @@
  "field_order": [
   "naming_series",
   "customer",
+  "default_price_list",
   "sales_person",
   "status",
   "mark_as_delivered",
@@ -110,12 +111,18 @@
    "fieldtype": "Table",
    "label": "Payment Mode",
    "options": "Book Order Payment Mode"
+  },
+  {
+   "fieldname": "default_price_list",
+   "fieldtype": "Link",
+   "label": "Default Price List",
+   "options": "Price List"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-09 17:35:34.087461",
+ "modified": "2026-04-24 11:47:50.909559",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order",
