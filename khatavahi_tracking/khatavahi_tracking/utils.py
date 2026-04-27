@@ -28,6 +28,7 @@ def make_sales_order(source_name):
 	target_doc.delivery_date = source_doc.delivey_date
 	target_doc.book_order = source_doc.name
 	target_doc.selling_price_list = source_doc.default_price_list
+	target_doc.set_warehouse = source_doc.source_warehouse
 	
 	for item in source_doc.item:
 		target_doc.append("items", {
