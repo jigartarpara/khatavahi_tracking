@@ -152,19 +152,21 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "User",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "sales_person",
    "fieldtype": "Link",
    "label": "Sales Person",
-   "options": "Sales Person"
+   "options": "Sales Person",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-24 17:18:39.766103",
+ "modified": "2026-04-27 15:01:54.361515",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",

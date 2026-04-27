@@ -127,13 +127,14 @@
    "fieldname": "sales_person",
    "fieldtype": "Link",
    "label": "Sales Person",
-   "options": "Sales Person"
+   "options": "Sales Person",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-24 17:19:19.295785",
+ "modified": "2026-04-27 15:01:00.623865",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
