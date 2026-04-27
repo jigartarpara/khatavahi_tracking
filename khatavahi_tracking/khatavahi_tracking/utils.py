@@ -4,6 +4,10 @@ def sync_book_order_status(doc, method):
 	if not doc.get("book_order"):
 		return
 
+	if method == "on_cancel" or method == "on_trash" or doc.docstatus == 2:
+		frappe.db.set_value("Book Order", doc.book_order, "status", "Pending")
+		return
+
 	status_map = {
 		0: "Sales Order Draft",
 		1: "Sales Order Submitted",
@@ -36,7 +40,8 @@ def make_sales_order(source_name):
 
 	if source_doc.sales_person_id:
 		target_doc.append("sales_team", {
-			"sales_person": source_doc.sales_person_id
+			"sales_person": source_doc.sales_person_id,
+			"allocated_percentage": 100
 		})
 	
 	target_doc.set_missing_values()
