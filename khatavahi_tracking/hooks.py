@@ -144,6 +144,7 @@ doc_events = {
 		"on_update": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
 		"on_submit": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
 		"on_cancel": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_trash": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
 	}
 }
 

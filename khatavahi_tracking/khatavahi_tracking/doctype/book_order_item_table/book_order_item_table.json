@@ -8,7 +8,9 @@
  "field_order": [
   "item",
   "qty",
-  "uom"
+  "uom",
+  "system_price",
+  "price"
  ],
  "fields": [
   {
@@ -34,13 +36,26 @@
    "label": "UOM",
    "options": "UOM",
    "reqd": 1
+  },
+  {
+   "fieldname": "system_price",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "System Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Price"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-25 11:08:27.012496",
+ "modified": "2026-04-24 11:43:15.113533",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order Item Table",

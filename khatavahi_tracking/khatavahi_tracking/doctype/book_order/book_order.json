@@ -8,7 +8,9 @@
  "field_order": [
   "naming_series",
   "customer",
+  "default_price_list",
   "sales_person",
+  "sales_person_id",
   "status",
   "mark_as_delivered",
   "column_break_dhjt",
@@ -53,8 +55,9 @@
   {
    "fieldname": "sales_person",
    "fieldtype": "Link",
-   "label": "Sales Person",
-   "options": "User"
+   "label": "User",
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_dhjt",
@@ -110,12 +113,25 @@
    "fieldtype": "Table",
    "label": "Payment Mode",
    "options": "Book Order Payment Mode"
+  },
+  {
+   "fieldname": "default_price_list",
+   "fieldtype": "Link",
+   "label": "Default Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "sales_person_id",
+   "fieldtype": "Link",
+   "label": "Sales Person",
+   "options": "Sales Person",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-09 17:35:34.087461",
+ "modified": "2026-04-27 15:03:09.191897",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order",
