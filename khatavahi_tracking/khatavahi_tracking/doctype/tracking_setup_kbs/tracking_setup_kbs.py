@@ -22,6 +22,8 @@ SALES_USER_PERMISSIONS = {
     "Item Group": {"select": 1, "read": 1, "export": 1},
     "Item Price": {"select": 1, "read": 1, "export": 1},
     "UOM": {"select": 1, "read": 1, "export": 1},
+    "Mode of Payment": {"select": 1, "read": 1, "export": 1},
+    "Warehouse": {"select": 1, "read": 1, "export": 1},
 }
 
 SUPPORT_USER_PERMISSIONS = {
@@ -34,6 +36,9 @@ SUPPORT_USER_PERMISSIONS = {
     "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
     "Customer": {"select": 1, "read": 1, "export": 1},
     "Item": {"select": 1, "read": 1, "export": 1},
+    "UOM": {"select": 1, "read": 1, "export": 1},
+    "Item Group": {"select": 1, "read": 1, "export": 1},
+    "Item Price": {"select": 1, "read": 1, "export": 1},
 }
 
 class TrackingSetupKBS(Document):
