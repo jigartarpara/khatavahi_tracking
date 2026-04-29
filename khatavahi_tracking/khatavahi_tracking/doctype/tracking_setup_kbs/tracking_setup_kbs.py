@@ -62,9 +62,17 @@ def apply_permission_to_all(role, user_type):
         frappe.throw("Invalid User Type")
     
     for doctype, perm in permissions.items():
-        add(doctype, role, 0)
+        is_if_owner = perm.get("if_owner", 0)
+        
+        if not frappe.db.exists("Custom DocPerm", {"parent": doctype, "role": role, "permlevel": 0, "if_owner": is_if_owner}):
+            add(doctype, role, 0)
+            if is_if_owner:
+                update(doctype, role, 0, "if_owner", 1, 0)
             
         for ptype, value in perm.items():
-            update(doctype, role, 0, ptype, value)
+            if ptype == "if_owner":
+                continue
+
+            update(doctype, role, 0, ptype, value, is_if_owner)
     
     frappe.msgprint(f"Permissions applied successfully to Role: {role} as {user_type}")
