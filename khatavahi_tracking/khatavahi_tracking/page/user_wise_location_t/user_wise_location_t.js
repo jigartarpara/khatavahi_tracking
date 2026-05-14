@@ -9,6 +9,20 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 
 	let $content = $('<div class="log-content"></div>').appendTo(page.main);
 
+	// Fix z-index overlap between Leaflet controls and Frappe dropdowns
+	frappe.dom.set_style(`
+		.leaflet-top, .leaflet-bottom {
+			z-index: 5 !important;
+		}
+		.leaflet-pane {
+			z-index: 1 !important;
+		}
+		.user-logs-container {
+			position: relative;
+			z-index: 1;
+		}
+	`);
+
 	let user_field = page.add_field({
 		fieldname: "user",
 		label: __("User"),
@@ -72,81 +86,151 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 		// Only fetch if at least one user is selected
 		if (!filters.user) return;
 
-		frappe.call({
-			method: "frappe.client.get_list",
-			args: {
-				doctype: "User Log KBS",
-				filters: filters,
-				fields: ["name", "user", "posting_date", "posting_time", "latitude", "longitude"],
-				order_by: "posting_date desc, posting_time desc",
-				limit_page_length: 1000,
-			},
-			callback: function (r) {
-				render_user_logs(r.message || []);
-			},
+		// Fetch logs and visits
+		Promise.all([
+			new Promise((resolve) => {
+				frappe.call({
+					method: "frappe.client.get_list",
+					args: {
+						doctype: "User Log KBS",
+						filters: filters,
+						fields: ["name", "user", "posting_date", "posting_time", "latitude", "longitude"],
+						order_by: "posting_date desc, posting_time desc",
+						limit_page_length: 1000,
+					},
+					callback: (r) => resolve(r.message || []),
+				});
+			}),
+			new Promise((resolve) => {
+				frappe.call({
+					method: "frappe.client.get_list",
+					args: {
+						doctype: "Client Visit",
+						filters: filters,
+						fields: [
+							"name",
+							"user",
+							"posting_date",
+							"checking_time",
+							"checking_latitude",
+							"checking_longitude",
+							"party_name",
+							"visit_for",
+						],
+						order_by: "posting_date desc, checking_time desc",
+						limit_page_length: 1000,
+					},
+					callback: (r) => resolve(r.message || []),
+				});
+			}),
+			new Promise((resolve) => {
+				frappe.call({
+					method: "frappe.client.get_list",
+					args: {
+						doctype: "Client Location",
+						fields: ["party_name", "latitude", "longitude"],
+						limit_page_length: 1000,
+					},
+					callback: (r) => resolve(r.message || []),
+				});
+			}),
+		]).then(([logs, visits, locations]) => {
+			render_user_logs(logs, visits, locations);
 		});
 	}
 
-	function render_user_logs(logs) {
+	function render_user_logs(logs, visits = [], locations = []) {
 		$content.empty();
 
-		if (logs.length === 0) {
+		if (logs.length === 0 && visits.length === 0) {
 			$content.html(
-				`<div class="text-muted text-center" style="padding: 20px;">${__("No logs found for the selected user(s) and date range.")}</div>`,
+				`<div class="text-muted text-center" style="padding: 20px;">${__("No logs or visits found for the selected user(s) and date range.")}</div>`,
 			);
 			return;
 		}
 
-		let html = `<div class="row">
-			<div class="col-md-6" style="max-height: 500px; overflow-y: auto;">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>${__("User")}</th>
-							<th>${__("Date")}</th>
-							<th>${__("Time")}</th>
-							<th>${__("Latitude")}</th>
-							<th>${__("Longitude")}</th>
-						</tr>
-					</thead>
-					<tbody>`;
-
-		let map_points = [];
+		let html = `
+			<div class="row">
+				<div class="col-md-12">
+					<div style="margin-bottom: 15px; text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+						<button class="btn btn-primary btn-sm" id="start-animation-btn">
+							<i class="fa fa-play" style="margin-right: 5px;"></i> ${__("Start Moving Direction")}
+						</button>
+						<button class="btn btn-danger btn-sm" id="stop-animation-btn" disabled>
+							<i class="fa fa-stop" style="margin-right: 5px;"></i> ${__("Stop Route")}
+						</button>
+					</div>
+					<div id="user-location-map" style="min-height: 500px; border: 1px solid #d1d8dd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative; z-index: 0;"></div>
+				</div>
+			</div>
+			
+			<div class="row" style="margin-top: 25px;">
+				<div class="col-md-12">
+					<div class="collapse-header" style="cursor: pointer; padding: 12px 15px; background: #f8f9fa; border: 1px solid #d1d8dd; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s;">
+						<div style="display: flex; align-items: center; gap: 10px;">
+							<i class="fa fa-list-ul text-muted"></i>
+							<h6 style="margin: 0; font-weight: 600; color: #36414c;">${__("Log Entries")} (${logs.length})</h6>
+						</div>
+						<i class="fa fa-chevron-down collapse-icon text-muted"></i>
+					</div>
+					<div class="collapse-content" style="display: none; border: 1px solid #d1d8dd; border-top: none; padding: 0; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; overflow: hidden;">
+						<div style="max-height: 500px; overflow-y: auto;">
+							<table class="table table-bordered table-hover" style="margin-bottom: 0; border: none;">
+								<thead style="position: sticky; top: 0; background: #ffffff; z-index: 10;">
+									<tr>
+										<th style="border-top: none;">${__("User")}</th>
+										<th style="border-top: none;">${__("Date")}</th>
+										<th style="border-top: none;">${__("Time")}</th>
+										<th style="border-top: none;">${__("Latitude")}</th>
+										<th style="border-top: none;">${__("Longitude")}</th>
+									</tr>
+								</thead>
+								<tbody>`;
 
 		logs.forEach((log) => {
 			html += `<tr>
 				<td>${log.user}</td>
 				<td>${frappe.datetime.str_to_user(log.posting_date)}</td>
 				<td>${log.posting_time}</td>
-				<td>${log.latitude || ""}</td>
-				<td>${log.longitude || ""}</td>
+				<td><span class="text-muted">${log.latitude || ""}</span></td>
+				<td><span class="text-muted">${log.longitude || ""}</span></td>
 			</tr>`;
 		});
 
-		html += `</tbody></table></div>
-			<div class="col-md-6">
-				<div style="margin-bottom: 10px; text-align: right;">
-					<button class="btn btn-primary btn-sm" id="start-animation-btn" style="margin-right: 5px;">
-						${__("Start Moving Direction")}
-					</button>
-					<button class="btn btn-danger btn-sm" id="stop-animation-btn" disabled>
-						${__("Stop Route")}
-					</button>
-				</div>
-				<div id="user-location-map" style="min-height: 460px; border: 1px solid #d1d8dd; border-radius: 4px;"></div>
-			</div>
-		</div>`;
+		html += `</tbody></table></div></div></div></div>`;
 
 		let $wrapper = $(`<div class="user-logs-container" style="padding: 15px;">${html}</div>`);
+
+		// Add collapse functionality
+		$wrapper.find('.collapse-header').on('click', function () {
+			let $content = $(this).next('.collapse-content');
+			let $icon = $(this).find('.collapse-icon');
+			if ($content.is(':visible')) {
+				$content.slideUp(200);
+				$(this).css('border-radius', '4px');
+				$icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+			} else {
+				$content.slideDown(200);
+				$(this).css('border-radius', '4px 4px 0 0');
+				$icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+			}
+		});
+
+		// Hover effect for header
+		$wrapper.find('.collapse-header').hover(
+			function () { $(this).css('background', '#f1f2f4'); },
+			function () { $(this).css('background', '#f8f9fa'); }
+		);
+
 		$content.append($wrapper);
 
-		if (logs.length > 0) {
-			render_map(logs);
+		if (logs.length > 0 || visits.length > 0) {
+			render_map(logs, visits, locations);
 		}
 	}
 
-	function render_map(logs = []) {
-		if (!logs || logs.length === 0) return;
+	function render_map(logs = [], visits = [], locations = []) {
+		if ((!logs || logs.length === 0) && (!visits || visits.length === 0)) return;
 
 		// Load Leaflet dynamically via CDN since map.bundle.js might not exist in all Frappe versions
 		let loadLeaflet = new Promise((resolve, reject) => {
@@ -202,6 +286,59 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 						shadowSize: [41, 41],
 					});
 
+				let all_points = [];
+
+
+
+				// Render client locations
+				if (locations && locations.length > 0) {
+					let location_map = {};
+					locations.forEach((loc) => {
+						location_map[loc.party_name] = loc;
+					});
+
+					let rendered_client_locations = new Set();
+
+					visits.forEach((visit) => {
+						let client_loc = location_map[visit.party_name];
+						if (client_loc && client_loc.latitude && client_loc.longitude) {
+							let client_pos = [parseFloat(client_loc.latitude), parseFloat(client_loc.longitude)];
+
+							// Only add the office marker once per customer
+							if (!rendered_client_locations.has(visit.party_name)) {
+								let popupText = `
+									<div style="padding: 5px; min-width: 150px;">
+										<b style="color: #2e67d2; font-size: 14px;">${__("Client Office Location")}</b><br>
+										<hr style="margin: 5px 0;">
+										<b>${__("Customer")}:</b> ${visit.party_name}
+									</div>
+								`;
+
+								L.marker(client_pos, {
+									icon: markerIcon("blue"),
+									zIndexOffset: 500,
+								})
+									.addTo(map)
+									.bindPopup(popupText);
+
+								all_points.push(client_pos);
+								rendered_client_locations.add(visit.party_name);
+							}
+
+							// Draw connection line for every individual visit
+							if (visit.checking_latitude && visit.checking_longitude) {
+								let checkin_pos = [parseFloat(visit.checking_latitude), parseFloat(visit.checking_longitude)];
+								L.polyline([checkin_pos, client_pos], {
+									color: "#2e67d2",
+									weight: 2,
+									dashArray: "5, 10",
+									opacity: 0.5,
+								}).addTo(map);
+							}
+						}
+					});
+				}
+
 				// Group logs by user and date
 				let grouped_logs = {};
 
@@ -231,8 +368,6 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 					"#00ACC1",
 				];
 				let colorIndex = 0;
-
-				let all_points = [];
 
 				Object.keys(grouped_logs).forEach((group_key) => {
 					let path_logs = grouped_logs[group_key];
@@ -322,7 +457,7 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 					animatedMarkers = [];
 				}
 
-				$('#start-animation-btn').off('click').on('click', function() {
+				$('#start-animation-btn').off('click').on('click', function () {
 					$(this).prop('disabled', true);
 					$('#stop-animation-btn').prop('disabled', false);
 
@@ -333,7 +468,7 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 						let path_logs = grouped_logs[group_key];
 						if (path_logs.length < 2) return;
 						let points = path_logs.map(log => [parseFloat(log.latitude), parseFloat(log.longitude)]);
-						
+
 						let movingMarker = L.marker(points[0], {
 							icon: L.icon({
 								iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
@@ -357,14 +492,14 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 						function move() {
 							if (i >= points.length - 1 || !animationRunning) return;
 							let start = points[i];
-							let end = points[i+1];
+							let end = points[i + 1];
 							let startTime = performance.now();
 
 							function frame(time) {
 								if (!animationRunning) return;
 								let elapsed = time - startTime;
 								let progress = Math.min(elapsed / durationPerPoint, 1);
-								
+
 								// Calculate current position
 								let lat = start[0] + (end[0] - start[0]) * progress;
 								let lng = start[1] + (end[1] - start[1]) * progress;
@@ -385,7 +520,7 @@ frappe.pages["user-wise-location-t"].on_page_load = function (wrapper) {
 					});
 				});
 
-				$('#stop-animation-btn').off('click').on('click', function() {
+				$('#stop-animation-btn').off('click').on('click', function () {
 					$(this).prop('disabled', true);
 					$('#start-animation-btn').prop('disabled', false);
 					stopAnimations();

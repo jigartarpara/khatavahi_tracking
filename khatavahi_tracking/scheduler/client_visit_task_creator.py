@@ -46,6 +46,7 @@ def execute():
                     "visit_for": "Customer",
                     "party_name": customer,
                     "user": user,
+                    "status": "Pending",
                     "posting_date": today_date,
                     "scheduled_date": today_date
                 })
