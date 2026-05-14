@@ -174,17 +174,18 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nPending\nVisited",
+   "options": "\nPending\nChecked In\nVisited",
    "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-14 12:31:01.946247",
+ "modified": "2026-05-14 16:17:10.561826",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

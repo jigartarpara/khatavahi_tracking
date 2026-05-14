@@ -48,7 +48,9 @@ def execute():
                     "user": user,
                     "status": "Pending",
                     "posting_date": today_date,
-                    "scheduled_date": today_date
+                    "scheduled_date": today_date,
+                    "checking_time": "",
+                    "checkout_time": "",
                 })
 
                 cv.insert(ignore_permissions=True)

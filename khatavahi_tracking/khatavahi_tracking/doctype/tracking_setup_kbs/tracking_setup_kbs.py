@@ -10,7 +10,7 @@ SALES_USER_PERMISSIONS = {
     "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
     "Face Data": {"select": 1, "read": 1, "export": 1},
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
+    "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
     "Book Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
