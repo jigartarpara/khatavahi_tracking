@@ -10,6 +10,7 @@
   "visit_for",
   "party_name",
   "posting_date",
+  "scheduled_date",
   "distance_variation",
   "column_break_thdx",
   "distance_customer_checkin",
@@ -161,12 +162,18 @@
    "label": "Sales Person",
    "options": "Sales Person",
    "read_only": 1
+  },
+  {
+   "fieldname": "scheduled_date",
+   "fieldtype": "Date",
+   "label": "Scheduled Date",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 15:01:54.361515",
+ "modified": "2026-05-14 11:57:16.957307",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
