@@ -10,7 +10,9 @@
   "qty",
   "uom",
   "system_price",
-  "price"
+  "price",
+  "column_break_vfba",
+  "item_name"
  ],
  "fields": [
   {
@@ -49,13 +51,25 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Price"
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vfba",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-24 11:43:15.113533",
+ "modified": "2026-05-14 12:28:55.136190",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Book Order Item Table",
