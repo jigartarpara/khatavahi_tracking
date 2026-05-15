@@ -10,8 +10,8 @@ SALES_USER_PERMISSIONS = {
     "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
     "Face Data": {"select": 1, "read": 1, "export": 1},
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
-    "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
-    "Book Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
+    "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
+
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Customer": {"select": 1, "read": 1, "export": 1},
@@ -26,6 +26,9 @@ SALES_USER_PERMISSIONS = {
     "Warehouse": {"select": 1, "read": 1, "export": 1},
     "Global Defaults": {"select": 1, "read": 1, "export": 1},
     "Currency": {"select": 1, "read": 1, "export": 1},
+    "Sales Order": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1, "if_owner": 1},
+    "Sales Person": {"select": 1, "read": 1, "export": 1},
+    "Employee": {"select": 1, "read": 1, "export": 1},
 }
 
 SUPPORT_USER_PERMISSIONS = {

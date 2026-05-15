@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "tracking_time_interval",
+  "auto_create_employee_checkin",
   "column_break_nmeg",
   "distance_threshold"
  ],
@@ -25,13 +26,19 @@
   {
    "fieldname": "column_break_nmeg",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_create_employee_checkin",
+   "fieldtype": "Check",
+   "label": "Auto Create Employee Checkin"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-05 12:43:18.777689",
+ "modified": "2026-05-14 12:33:51.424543",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Tracking Setup KBS",

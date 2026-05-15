@@ -12,9 +12,11 @@
   "column_break_jtvc",
   "date",
   "time",
+  "user_image",
   "column_break_tsue",
   "latitude",
   "longitude",
+  "preview",
   "section_break_opvl",
   "auto_checkout",
   "column_break_izxy",
@@ -129,12 +131,24 @@
    "label": "Sales Person",
    "options": "Sales Person",
    "read_only": 1
+  },
+  {
+   "fieldname": "user_image",
+   "fieldtype": "Attach Image",
+   "label": "User Image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preview",
+   "fieldtype": "Image",
+   "label": "Preview",
+   "options": "user_image"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 15:01:00.623865",
+ "modified": "2026-05-14 11:46:54.978465",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
