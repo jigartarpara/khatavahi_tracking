@@ -1,6 +1,5 @@
 import frappe
 from khatavahi_tracking.version import __version__
-from frappe.utils import today, now
 
 @frappe.whitelist(allow_guest=True)
 def get_version():
