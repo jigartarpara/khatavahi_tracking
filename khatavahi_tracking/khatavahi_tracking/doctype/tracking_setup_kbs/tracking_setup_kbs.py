@@ -14,29 +14,11 @@ SALES_USER_PERMISSIONS = {
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Customer": {"select": 1, "read": 1, "export": 1},
-    "Customer Group": {"select": 1, "read": 1, "export": 1},
-    "Territory": {"select": 1, "read": 1, "export": 1},
-    "Address": {"select": 1, "read": 1, "export": 1},
     "Opportunity": {"select": 1, "read": 1, "if_owner": 1},
     "Item": {"select": 1, "read": 1, "export": 1},
-    "Selling Settings": {"select": 1, "read": 1, "export": 1},
-    "Price List": {"select": 1, "read": 1, "export": 1},
     "Item Group": {"select": 1, "read": 1, "export": 1},
-    "Item Price": {"select": 1, "read": 1, "export": 1},
     "UOM": {"select": 1, "read": 1, "export": 1},
-    "Mode of Payment": {"select": 1, "read": 1, "export": 1},
-    "Warehouse": {"select": 1, "read": 1, "export": 1},
-    "Global Defaults": {"select": 1, "read": 1, "export": 1},
-    "Currency": {"select": 1, "read": 1, "export": 1},
-    "Sales Person": {"select": 1, "read": 1, "export": 1},
-    "Employee": {"select": 1, "read": 1, "export": 1},
-    "Project": {"select": 1, "read": 1, "export": 1},
-    "Lead": {"select": 1, "read": 1, "if_owner": 1},
-    "Quotation": {"select": 1, "read": 1, "if_owner": 1},
-    "Sales Order": {"select": 1, "read": 1, "if_owner": 1},
-    "Sales Invoice": {"select": 1, "read": 1, "if_owner": 1},
-    "Delivery Note": {"select": 1, "read": 1, "if_owner": 1},
-    "Payment Entry": {"select": 1, "read": 1, "if_owner": 1}
+    "Property Setter": {"select": 1, "read": 1, "export": 1}
 }
 
 SUPPORT_USER_PERMISSIONS = {
