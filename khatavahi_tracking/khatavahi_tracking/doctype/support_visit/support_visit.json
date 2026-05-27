@@ -11,7 +11,6 @@
   "naming_series",
   "customer",
   "customer_name",
-  "address_display",
   "contact_display",
   "contact_mobile",
   "contact_email",
@@ -42,6 +41,7 @@
   "company",
   "contact_info_section",
   "customer_address",
+  "address_display",
   "contact_person",
   "col_break4",
   "territory",
@@ -90,10 +90,11 @@
    "read_only": 1
   },
   {
+   "depends_on": "customer_address",
    "fieldname": "address_display",
    "fieldtype": "Small Text",
-   "hidden": 1,
    "label": "Address",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -332,7 +333,7 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-27 16:06:26.565640",
+ "modified": "2026-05-27 11:00:13.946926",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Support Visit",

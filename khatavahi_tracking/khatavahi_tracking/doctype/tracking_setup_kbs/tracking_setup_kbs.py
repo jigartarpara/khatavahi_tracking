@@ -12,13 +12,9 @@ SALES_USER_PERMISSIONS = {
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
     "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
-    "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
-    "Customer": {"select": 1, "read": 1, "export": 1},
-    "Opportunity": {"select": 1, "read": 1, "if_owner": 1},
-    "Item": {"select": 1, "read": 1, "export": 1},
-    "Item Group": {"select": 1, "read": 1, "export": 1},
-    "UOM": {"select": 1, "read": 1, "export": 1},
-    "Property Setter": {"select": 1, "read": 1, "export": 1}
+    "Property Setter": {"select": 1, "read": 1, "export": 1},
+    "Global Defaults": {"select": 1, "read": 1, "export": 1},
+    "Currency": {"select": 1, "read": 1, "export": 1}
 }
 
 SUPPORT_USER_PERMISSIONS = {
@@ -27,16 +23,9 @@ SUPPORT_USER_PERMISSIONS = {
     "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
     "Face Data": {"select": 1, "read": 1, "export": 1},
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
-    "ToDo": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
-    "Customer": {"select": 1, "read": 1, "export": 1},
-    "Address": {"select": 1, "read": 1, "export": 1},
-    "Item": {"select": 1, "read": 1, "export": 1},
-    "UOM": {"select": 1, "read": 1, "export": 1},
-    "Item Group": {"select": 1, "read": 1, "export": 1},
-    "Item Price": {"select": 1, "read": 1, "export": 1},
     "Global Defaults": {"select": 1, "read": 1, "export": 1},
-    "Currency": {"select": 1, "read": 1, "export": 1},
+    "Currency": {"select": 1, "read": 1, "export": 1}
 }
 
 class TrackingSetupKBS(Document):

@@ -19,10 +19,10 @@
   "preview",
   "section_break_opvl",
   "auto_checkout",
-  "column_break_izxy",
-  "auto_checkin",
   "column_break_wfpj",
   "turn_off_gps",
+  "column_break_izxy",
+  "auto_checkin",
   "column_break_qhgt",
   "session_destroy"
  ],
@@ -88,6 +88,7 @@
    "default": "0",
    "fieldname": "auto_checkin",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Auto Checkin",
    "read_only": 1
   },
@@ -122,6 +123,7 @@
    "default": "0",
    "fieldname": "session_destroy",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Session Destroy",
    "read_only": 1
   },
@@ -148,7 +150,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-14 11:46:54.978465",
+ "modified": "2026-05-27 09:59:25.618646",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
