@@ -139,7 +139,14 @@ after_migrate = "khatavahi_tracking.khatavahi_tracking.setup.after_migrate"
 # ---------------
 # Hook on document methods and events
 
-doc_events = {}
+doc_events = {
+	"Sales Order": {
+		"on_update": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_submit": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_cancel": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+		"on_trash": "khatavahi_tracking.khatavahi_tracking.utils.sync_book_order_status",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
