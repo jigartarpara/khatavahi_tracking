@@ -24,7 +24,15 @@
   "column_break_izxy",
   "auto_checkin",
   "column_break_qhgt",
-  "session_destroy"
+  "session_destroy",
+  "gps_data_section",
+  "accuracy",
+  "speed",
+  "ignore_location",
+  "column_break_yesl",
+  "timestamp",
+  "ismocked",
+  "suspicious_speed"
  ],
  "fields": [
   {
@@ -145,12 +153,59 @@
    "fieldtype": "Image",
    "label": "Preview",
    "options": "user_image"
+  },
+  {
+   "fieldname": "gps_data_section",
+   "fieldtype": "Section Break",
+   "label": "GPS Data"
+  },
+  {
+   "fieldname": "accuracy",
+   "fieldtype": "Data",
+   "label": "Accuracy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "speed",
+   "fieldtype": "Data",
+   "label": "Speed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yesl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Data",
+   "label": "Timestamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ismocked",
+   "fieldtype": "Data",
+   "label": "isMocked",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ignore_location",
+   "fieldtype": "Check",
+   "label": "Ignore Location",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "suspicious_speed",
+   "fieldtype": "Check",
+   "label": "Suspicious Speed",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-27 09:59:25.618646",
+ "modified": "2026-06-05 13:20:38.825808",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Checkin KBS",
