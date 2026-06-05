@@ -13,7 +13,15 @@
   "posting_time",
   "column_break_xqmi",
   "latitude",
-  "longitude"
+  "longitude",
+  "gps_dat_section",
+  "accuracy",
+  "speed",
+  "ignore_location",
+  "column_break_ydls",
+  "timestamp",
+  "ismocked",
+  "suspicious_speed"
  ],
  "fields": [
   {
@@ -69,12 +77,59 @@
    "label": "Sales Person",
    "options": "Sales Person",
    "read_only": 1
+  },
+  {
+   "fieldname": "gps_dat_section",
+   "fieldtype": "Section Break",
+   "label": "GPS Dat"
+  },
+  {
+   "fieldname": "accuracy",
+   "fieldtype": "Data",
+   "label": "Accuracy",
+   "read_only": 1
+  },
+  {
+   "fieldname": "speed",
+   "fieldtype": "Data",
+   "label": "Speed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ydls",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Data",
+   "label": "Timestamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ismocked",
+   "fieldtype": "Data",
+   "label": "isMocked",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ignore_location",
+   "fieldtype": "Check",
+   "label": "Ignore Location",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "suspicious_speed",
+   "fieldtype": "Check",
+   "label": "Suspicious Speed",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 15:01:07.416160",
+ "modified": "2026-06-05 14:00:49.959161",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",
