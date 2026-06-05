@@ -14,7 +14,7 @@
   "column_break_xqmi",
   "latitude",
   "longitude",
-  "gps_dat_section",
+  "gps_data_section",
   "accuracy",
   "speed",
   "ignore_location",
@@ -79,11 +79,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "gps_dat_section",
-   "fieldtype": "Section Break",
-   "label": "GPS Dat"
-  },
-  {
    "fieldname": "accuracy",
    "fieldtype": "Data",
    "label": "Accuracy",
@@ -124,12 +119,17 @@
    "fieldtype": "Check",
    "label": "Suspicious Speed",
    "read_only": 1
+  },
+  {
+   "fieldname": "gps_data_section",
+   "fieldtype": "Section Break",
+   "label": "GPS Data"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-06-05 14:00:49.959161",
+ "modified": "2026-06-05 14:26:44.619887",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "User Log KBS",
