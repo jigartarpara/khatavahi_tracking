@@ -81,7 +81,6 @@
    "onboard": 0,
    "type": "Link"
   },
-
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -131,9 +130,19 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Book Order",
+   "link_count": 0,
+   "link_to": "Book Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-03-27 17:34:51.984428",
+ "modified": "2026-06-05 15:32:43.469983",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Khatavahi Tracking",
