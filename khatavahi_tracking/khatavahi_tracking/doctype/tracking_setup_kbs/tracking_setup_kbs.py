@@ -6,8 +6,8 @@ from frappe.model.document import Document
 
 SALES_USER_PERMISSIONS = {
     "Tracking Setup KBS": {"select": 1, "read": 1, "export": 1},
-    "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
-    "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
+    "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Face Data": {"select": 1, "read": 1, "export": 1},
     "Client Location": {"select": 1, "read": 1, "write": 1, "create": 1},
     "Client Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "delete": 1, "export": 1},
@@ -20,8 +20,8 @@ SALES_USER_PERMISSIONS = {
 
 SUPPORT_USER_PERMISSIONS = {
     "Tracking Setup KBS": {"select": 1, "read": 1, "export": 1},
-    "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
-    "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1, "if_owner": 1},
+    "User Checkin KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
+    "User Log KBS": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Face Data": {"select": 1, "read": 1, "export": 1},
     "Task": {"select": 1, "read": 1, "write": 1, "create": 1, "export": 1},
     "Support Visit": {"select": 1, "read": 1, "write": 1, "create": 1, "submit": 1, "export": 1},
