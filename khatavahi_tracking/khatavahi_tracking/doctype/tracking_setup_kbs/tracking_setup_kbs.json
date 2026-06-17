@@ -8,7 +8,8 @@
   "tracking_time_interval",
   "auto_create_employee_checkin",
   "column_break_nmeg",
-  "distance_threshold"
+  "distance_threshold",
+  "turn_off_gps"
  ],
  "fields": [
   {
@@ -32,13 +33,19 @@
    "fieldname": "auto_create_employee_checkin",
    "fieldtype": "Check",
    "label": "Auto Create Employee Checkin"
+  },
+  {
+   "default": "0",
+   "fieldname": "turn_off_gps",
+   "fieldtype": "Check",
+   "label": "Turn off GPS"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-05-14 12:33:51.424543",
+ "modified": "2026-06-16 15:55:10.730434",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Tracking Setup KBS",
