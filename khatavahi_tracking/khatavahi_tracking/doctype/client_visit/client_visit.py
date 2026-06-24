@@ -1,8 +1,12 @@
 import frappe
 from frappe.model.document import Document
+from frappe.contacts.doctype.address.address import get_address_display
 
 class ClientVisit(Document):
 	def validate(self):
+		if self.address:
+			self.address_display = get_address_display(self.address)
+
 		if self.user and not self.sales_person:
 			employee = frappe.db.get_value("Employee", {"user_id": self.user}, "name")
 			if employee:

@@ -1,0 +1,31 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-06-24 14:28:36.354596",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-06-24 14:28:36.354596",
+ "modified_by": "Administrator",
+ "module": "Khatavahi Tracking",
+ "name": "EOD Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Client Visit",
+ "report_name": "EOD Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Khatavahi Tracking"
+  }
+ ],
+ "timeout": 0
+}

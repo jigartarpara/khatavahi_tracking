@@ -9,6 +9,8 @@
   "naming_series",
   "visit_for",
   "party_name",
+  "address",
+  "address_display",
   "posting_date",
   "scheduled_date",
   "distance_variation",
@@ -176,12 +178,25 @@
    "label": "Status",
    "options": "\nPending\nChecked In\nVisited",
    "read_only": 1
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_display",
+   "fieldtype": "Small Text",
+   "label": "Address Display",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-14 16:17:10.561826",
+ "modified": "2026-06-24 14:25:20.881344",
  "modified_by": "Administrator",
  "module": "Khatavahi Tracking",
  "name": "Client Visit",
