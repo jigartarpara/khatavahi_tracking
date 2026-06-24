@@ -1,0 +1,57 @@
+<h2 class="text-center">{%= __("EOD Report") %}</h2>
+<div class="text-center" style="margin-bottom: 20px;">
+	{%= filters.date %}
+</div>
+
+<style>
+	.eod-print-summary-table { width: 100%; max-width: 600px; margin-bottom: 20px; font-size: 14px; }
+	.eod-print-summary-table td { padding: 4px 8px; vertical-align: top; }
+	.eod-print-summary-label { font-weight: bold; width: 45%; text-transform: uppercase; }
+</style>
+
+{% if (data.length && data[0]._summary_user_full_name) { %}
+<table class="eod-print-summary-table">
+	<tr><td class="eod-print-summary-label">{%= __("NAME:") %}</td><td>{%= data[0]._summary_user_full_name %}</td></tr>
+	<tr><td class="eod-print-summary-label">{%= __("CHECK-IN TIME:") %}</td><td>{%= data[0]._summary_checkin_time %}</td></tr>
+	<tr><td class="eod-print-summary-label">{%= __("CHECK-OUT TIME:") %}</td><td>{%= data[0]._summary_checkout_time %}</td></tr>
+	<tr><td class="eod-print-summary-label">{%= __("TOTAL WORK HOURS:") %}</td><td>{%= data[0]._summary_total_work_hours %}</td></tr>
+	<tr><td colspan="2" style="height: 15px;"></td></tr>
+	<tr><td class="eod-print-summary-label">{%= __("NO. OF VISITS:") %}</td><td>{%= data[0]._summary_no_of_visits %}</td></tr>
+	<tr><td class="eod-print-summary-label">{%= __("TIME SPENT DURING VISITS:") %}</td><td>{%= data[0]._summary_time_spent_visits %}</td></tr>
+</table>
+{% } %}
+
+{% if (!data.length) { %}
+<div class="text-center text-muted" style="margin-top: 50px; font-size: 16px;">
+	{%= __("There are no check-ins, check-outs, or client visits recorded for this user on the selected date.") %}
+</div>
+{% } else { %}
+
+<div style="margin-bottom: 10px; font-size: 14px;">
+	<b>{%= __("PARTIES VISITED:") %}</b>
+</div>
+
+<table class="table table-bordered" style="margin-top: 0px; table-layout: fixed; width: 99%; word-wrap: break-word;">
+	<thead>
+		<tr>
+			<th style="width: 12%">{%= __("Time") %}</th>
+			<th style="width: 18%">{%= __("Party Name") %}</th>
+			<th style="width: 25%">{%= __("Note") %}</th>
+			<th style="width: 35%">{%= __("Photos") %}</th>
+			<th style="width: 10%">{%= __("Time Spent") %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for(var i=0, l=data.length; i<l; i++) { %}
+		<tr>
+			<td>{%= data[i].time || "" %}</td>
+			<td>{%= data[i].party_name || "" %}</td>
+			<td>{%= data[i].note || "" %}</td>
+			<td>{%= data[i].photos || "" %}</td>
+			<td>{%= data[i].time_spent || "" %}</td>
+		</tr>
+		{% } %}
+	</tbody>
+</table>
+
+{% } %}
